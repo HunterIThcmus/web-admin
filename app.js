@@ -3,11 +3,23 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const passport = require('passport');
+require('./passport');
+const mongoose = require('mongoose');
+const flash = require('connect-flash');
+const session = require('express-session');
+
 
 var indexRouter = require('./routes/index');
-
+const usersRouter = require('./components/users');
 
 var app = express();
+mongoose.connect(process.env.URI, {useNewUrlParser: true})
+.then(() => console.log('MongoDB Connected'))
+.catch(err => console.log(err));
+
+
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -19,8 +31,35 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
 
+//app.use(express.bodyParser());
+
+// app.use(
+//   session({
+//     secret: process.env.SESSION_SECRET,
+//     resave: true,
+//     saveUninitialized: true
+//   })
+// );
+app.use(session({ secret: process.env.SESSION_SECRET }));
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Connect flash
+app.use(flash());
+
+app.use('/', indexRouter);
+app.use('/',usersRouter);
+
+
+
+// Global variables
+app.use(function(req, res, next) {
+  res.locals.success_msg = req.flash('success_msg');
+  res.locals.error_msg = req.flash('error_msg');
+  res.locals.error = req.flash('error');
+  next();
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
