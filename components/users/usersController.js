@@ -1,26 +1,29 @@
 const UserService = require('./usersService');
-const passport = require('passport');
-require('../../passport')(passport);
-module.exports.createUser = async (req, res, next) => {
+
+module.exports.LoadUsers = async (req, res, next) => {
+    let list=[];
     try{
-        await UserService.createUser("test",req.body.email,req.body.password,"1");
-        res.redirect('/');
+        list= await UserService.LoadUsers();
+       
     }catch(e){
         next(e);
     }
-    
-};
-
-module.exports.loginUser= async (req,res,next) => {
-try {
-    //await UserService.loginUser(req.body.username,req.body.password);
-    passport.authenticate('local', {
-        successRedirect: '/',
-        failureRedirect: '/login',
-        failureFlash: true
-      })(req, res, next);
-} catch (error) {
-    console.log("loi roi");
-    next(error);
+   
+    res.render("manage_users_account", { title: "ListUsers", list: list,user:req.user })
 }
+
+module.exports.EditUsersAccount=async (req, res, next) => {
+
+    let value
+    try {
+        console.log(req.query.q)
+        value = await UserService.getById(req.query.q)
+
+    } catch (error) {
+        next(error);
+    }
+    res.render('edit_user_profile', { value:value, user: req.user })
+}
+module.exports.Block= async(req,res,next) =>{
+    
 }

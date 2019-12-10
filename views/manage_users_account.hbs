@@ -16,88 +16,21 @@
                     </tr>
                 </thead>
                 <tbody>
+                   
+                     {{#each list}}
                     <tr>
-                        <td>123</td>
-                        <td>Pham_Van_A</td>
-                        <td>pvA@email.com</td>
+                        <td>11</td>
+                        <td>{{this.name}}</td>
+                        <td>{{this.username}}</td>
                         <td>0123456789</td>
                         <td>Nam</td>
                         <td>aaaaaaaa</td>
+                         
+                        <td><button class="btn btn-primary" type="button" onclick="location.href='/edit_user_profile?q={{this._id}}'">Chỉnh sửa</button>
+                            <button class="btn btn-primary" type="button">Xóa</button></td>
                         
-                        <td><button class="btn btn-primary" type="button" onclick="location.href='edit_user_profile'">Chỉnh sửa</button>
-                            <button class="btn btn-primary" type="button">Xóa</button></td>
-                        
                     </tr>
-                   <tr>
-                        <td>123</td>
-                        <td>Pham_Van_A</td>
-                        <td>pvA@email.com</td>
-                        <td>0123456789</td>
-                        <td>Nam</td>
-                        <td>aaaaaaaa</td>
-                        <td><button class="btn btn-primary" type="button" onclick="location.href='edit_user_profile'">Chỉnh sửa</button>
-                            <button class="btn btn-primary" type="button">Xóa</button></td>
-                    </tr>
-                     <tr>
-                        <td>123</td>
-                        <td>Pham_Van_A</td>
-                        <td>pvA@email.com</td>
-                        <td>0123456789</td>
-                        <td>Nam</td>
-                        <td>aaaaaaaa</td>
-                        <td><button class="btn btn-primary" type="button" onclick="location.href='edit_user_profile'">Chỉnh sửa</button>
-                            <button class="btn btn-primary" type="button">Xóa</button></td>
-                    </tr>
-                   <tr>
-                        <td>123</td>
-                        <td>Pham_Van_A</td>
-                        <td>pvA@email.com</td>
-                        <td>0123456789</td>
-                        <td>Nam</td>
-                        <td>aaaaaaaa</td>
-                        <td><button class="btn btn-primary" type="button" onclick="location.href='edit_user_profile'">Chỉnh sửa</button>
-                            <button class="btn btn-primary" type="button">Xóa</button></td>
-                    </tr>
-                    <tr>
-                        <td>123</td>
-                        <td>Pham_Van_A</td>
-                        <td>pvA@email.com</td>
-                        <td>0123456789</td>
-                        <td>Nam</td>
-                        <td>aaaaaaaa</td>
-                        <td><button class="btn btn-primary" type="button" onclick="location.href='edit_user_profile'">Chỉnh sửa</button>
-                            <button class="btn btn-primary" type="button">Xóa</button></td>
-                    </tr>
-                   <tr>
-                        <td>123</td>
-                        <td>Pham_Van_A</td>
-                        <td>pvA@email.com</td>
-                        <td>0123456789</td>
-                        <td>Nam</td>
-                        <td>aaaaaaaa</td>
-                        <td><button class="btn btn-primary" type="button" onclick="location.href='edit_user_profile'">Chỉnh sửa</button>
-                            <button class="btn btn-primary" type="button">Xóa</button></td>
-                    </tr>
-                    <tr>
-                        <td>123</td>
-                        <td>Pham_Van_A</td>
-                        <td>pvA@email.com</td>
-                        <td>0123456789</td>
-                        <td>Nam</td>
-                        <td>aaaaaaaa</td>
-                        <td><button class="btn btn-primary" type="button" onclick="location.href='edit_user_profile'">Chỉnh sửa</button>
-                            <button class="btn btn-primary" type="button">Xóa</button></td>
-                    </tr>
-                   <tr>
-                        <td>123</td>
-                        <td>Pham_Van_A</td>
-                        <td>pvA@email.com</td>
-                        <td>0123456789</td>
-                        <td>Nam</td>
-                        <td>aaaaaaaa</td>
-                        <td><button class="btn btn-primary" type="button" onclick="location.href='edit_user_profile'">Chỉnh sửa</button>
-                            <button class="btn btn-primary" type="button">Xóa</button></td>
-                    </tr>
+                    {{/each}}
                 </tbody>
                 <tfoot>
                     <tr>
@@ -108,7 +41,6 @@
                         <th>Giới tính</th>
                         <th>Mật Khẩu</th>
                         <th></th>
-                    
                     </tr>
                 </tfoot>
             </table>

@@ -1,18 +1,16 @@
 const mongoose = require('mongoose');
-var db = mongoose.connection;
-// console.log("trang thai la"+ db.readyState);
-//create schame
-var useraccountschema = new mongoose.Schema({
-    name: String,
-    email: String,
-    password: String,
-    permission:String
-},
-    {
-        collection: 'adminaccounts'
+const db = mongoose.connection;
 
+//create schame
+const useraccoutschema = new mongoose.Schema({
+    name: String,
+    username: String,
+    password: String
+    },
+    {
+        collection: 'useraccout'
     });
 
-const user = db.useDb("webadmin").model("user", useraccountschema);
+const user = db.useDb("mydb").model("user", useraccoutschema);
 
 module.exports = user;

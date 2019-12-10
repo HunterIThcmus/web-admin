@@ -11,7 +11,10 @@ const session = require('express-session');
 
 
 var indexRouter = require('./routes/index');
+const adminRouter = require('./components/admin');
 const usersRouter = require('./components/users');
+const productRouter= require('./components/product');
+
 
 var app = express();
 mongoose.connect(process.env.URI, {useNewUrlParser: true})
@@ -32,15 +35,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-//app.use(express.bodyParser());
 
-// app.use(
-//   session({
-//     secret: process.env.SESSION_SECRET,
-//     resave: true,
-//     saveUninitialized: true
-//   })
-// );
 app.use(session({ secret: process.env.SESSION_SECRET }));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -49,7 +44,11 @@ app.use(passport.session());
 app.use(flash());
 
 app.use('/', indexRouter);
+app.use('/',adminRouter);
 app.use('/',usersRouter);
+app.use('/',productRouter);
+
+
 
 
 

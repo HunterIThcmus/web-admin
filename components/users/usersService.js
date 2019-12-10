@@ -1,14 +1,15 @@
-const bcrypt = require('bcryptjs');
 const UserModel = require('../../model/users');
-module.exports.createUser = (name, email,password,permission) => {
-    let hash = bcrypt.hashSync(password,bcrypt.genSaltSync(10));
-    const newUser = new UserModel({name,email,password: hash,permission});
-    console.log(newUser);
-    return newUser.save();
-}
 
-module.exports.loginUser =(email,password) =>
-{
-    console.log("just for test");
-    return true;
+
+module.exports.LoadUsers = async() => {
+
+   const list= await UserModel.find();
+           
+         return list;
+        }
+  
+module.exports.getById = async (id) => {
+    const result = await UserModel.findById(id);
+    console.log(result + "ne")
+    return result;
 }

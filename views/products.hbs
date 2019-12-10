@@ -44,8 +44,8 @@
     <link rel="stylesheet" href="stylesheets/ion.rangeSlider.skinFlat.css">
     </link>
 
-    <link rel="stylesheet" href="stylesheets/main.css">
-    </link>
+    {{!-- <link rel="stylesheet" href="stylesheets/main.css">
+    </link> --}}
     <!-- main css -->
     <link rel="stylesheet" href="stylesheets/style.css">
     </link>
@@ -100,10 +100,11 @@
 
                     <div class="latest_product_inner">
                         <div class="row">
+                            {{#each list}}
                             <div class="col-lg-4 col-md-6">
                                 <div class="single-product">
                                     <div class="product-img">
-                                        <img class="card-img" src="img/product/inspired-product/i1.jpg" alt="">
+                                        <img class="card-img" src="{{this.img}}" alt="">
                                         <div class="p_icon">
                                             <a href="single-product">
                                                 <i class="ti-eye"></i>
@@ -118,230 +119,16 @@
                                     </div>
                                     <div class="product-btm">
                                         <a href="#" class="d-block">
-                                            <h4>Giày sneaker nam mới nhất</h4>
+                                            <h4>{{this.name}}</h4>
                                         </a>
                                         <div class="mt-3">
-                                            <span class="mr-4">$ 25,00</span> <del> $ 35,00 </del>
+                                            <span class="mr-4">$ {{this.price}}</span> <del> $ 35,00 </del>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            {{/each}}
 
-                            <div class="col-lg-4 col-md-6">
-                                <div class="single-product">
-                                    <div class="product-img">
-                                        <img class="card-img" src="img/product/inspired-product/i2.jpg" alt="">
-                                        <div class="p_icon">
-                                            <a href="single-product">
-                                                <i class="ti-eye"></i>
-                                            </a>
-                                            <a href="#">
-                                                <i class="lnr lnr-pencil"></i>
-                                            </a>
-                                            <a href="#">
-                                                <i class="lnr lnr-trash"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="product-btm">
-                                        <a href="#" class="d-block">
-                                            <h4>Giày sneaker nam mới nhất</h4>
-                                        </a>
-                                        <div class="mt-3">
-                                            <span class="mr-4">$ 25,00</span> <del> $ 35,00 </del>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4 col-md-6">
-                                <div class="single-product">
-                                    <div class="product-img">
-                                        <img class="card-img" src="img/product/inspired-product/i3.jpg" alt="">
-                                        <div class="p_icon">
-                                            <a href="single-product">
-                                                <i class="ti-eye"></i>
-                                            </a>
-                                            <a href="#">
-                                                <i class="lnr lnr-pencil"></i>
-                                            </a>
-                                            <a href="#">
-                                                <i class="lnr lnr-trash"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="product-btm">
-                                        <a href="#" class="d-block">
-                                            <h4>Giày sneaker nam mới nhất</h4>
-                                        </a>
-                                        <div class="mt-3">
-                                            <span class="mr-4">$ 25,00</span> <del> $ 35,00 </del>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4 col-md-6">
-                                <div class="single-product">
-                                    <div class="product-img">
-                                        <img class="card-img" src="img/product/inspired-product/i4.jpg" alt="">
-                                        <div class="p_icon">
-                                            <a href="single-product">
-                                                <i class="ti-eye"></i>
-                                            </a>
-                                            <a href="#">
-                                                <i class="lnr lnr-pencil"></i>
-                                            </a>
-                                            <a href="#">
-                                                <i class="lnr lnr-trash"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="product-btm">
-                                        <a href="#" class="d-block">
-                                            <h4>Giày sneaker nam mới nhất</h4>
-                                        </a>
-                                        <div class="mt-3">
-                                            <span class="mr-4">$ 25,00</span> <del> $ 35,00 </del>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4 col-md-6">
-                                <div class="single-product">
-                                    <div class="product-img">
-                                        <img class="card-img" src="img/product/inspired-product/i5.jpg" alt="">
-                                        <div class="p_icon">
-                                            <a href="single-product">
-                                                <i class="ti-eye"></i>
-                                            </a>
-                                            <a href="#">
-                                                <i class="lnr lnr-pencil"></i>
-                                            </a>
-                                            <a href="#">
-                                                <i class="lnr lnr-trash"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="product-btm">
-                                        <a href="#" class="d-block">
-                                            <h4>Giày sneaker nam mới nhất</h4>
-                                        </a>
-                                        <div class="mt-3">
-                                            <span class="mr-4">$ 25,00</span> <del> $ 35,00 </del>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4 col-md-6">
-                                <div class="single-product">
-                                    <div class="product-img">
-                                        <img class="card-img" src="img/product/inspired-product/i6.jpg" alt="">
-                                        <div class="p_icon">
-                                            <a href="single-product">
-                                                <i class="ti-eye"></i>
-                                            </a>
-                                            <a href="#">
-                                                <i class="lnr lnr-pencil"></i>
-                                            </a>
-                                            <a href="#">
-                                                <i class="lnr lnr-trash"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="product-btm">
-                                        <a href="#" class="d-block">
-                                            <h4>Giày sneaker nam mới nhất</h4>
-                                        </a>
-                                        <div class="mt-3">
-                                            <span class="mr-4">$ 25,00</span> <del> $ 35,00 </del>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4 col-md-6">
-                                <div class="single-product">
-                                    <div class="product-img">
-                                        <img class="card-img" src="img/product/inspired-product/i7.jpg" alt="">
-                                        <div class="p_icon">
-                                            <a href="single-product">
-                                                <i class="ti-eye"></i>
-                                            </a>
-                                            <a href="#">
-                                                <i class="lnr lnr-pencil"></i>
-                                            </a>
-                                            <a href="#">
-                                                <i class="lnr lnr-trash"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="product-btm">
-                                        <a href="#" class="d-block">
-                                            <h4>Giày sneaker nam mới nhất</h4>
-                                        </a>
-                                        <div class="mt-3">
-                                            <span class="mr-4">$ 25,00</span> <del> $ 35,00 </del>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4 col-md-6">
-                                <div class="single-product">
-                                    <div class="product-img">
-                                        <img class="card-img" src="img/product/inspired-product/i8.jpg" alt="">
-                                        <div class="p_icon">
-                                            <a href="single-product">
-                                                <i class="ti-eye"></i>
-                                            </a>
-                                            <a href="#">
-                                                <i class="lnr lnr-pencil"></i>
-                                            </a>
-                                            <a href="#">
-                                                <i class="lnr lnr-trash"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="product-btm">
-                                        <a href="#" class="d-block">
-                                            <h4>Giày sneaker nam mới nhất</h4>
-                                        </a>
-                                        <div class="mt-3">
-                                            <span class="mr-4">$ 25,00</span> <del> $ 35,00 </del>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4 col-md-6">
-                                <div class="single-product">
-                                    <div class="product-img">
-                                        <img class="card-img" src="img/product/inspired-product/i2.jpg" alt="">
-                                        <div class="p_icon">
-                                            <a href="single-product">
-                                                <i class="ti-eye"></i>
-                                            </a>
-                                            <a href="#">
-                                                <i class="lnr lnr-pencil"></i>
-                                            </a>
-                                            <a href="#">
-                                                <i class="lnr lnr-trash"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="product-btm">
-                                        <a href="#" class="d-block">
-                                            <h4>Giày sneaker nam mới nhất</h4>
-                                        </a>
-                                        <div class="mt-3">
-                                            <span class="mr-4">$ 25,00</span> <del> $ 35,00 </del>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>

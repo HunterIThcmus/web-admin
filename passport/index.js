@@ -5,7 +5,7 @@ const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcryptjs');
 
 // Load User model
-const User = require('../model/users');
+const User = require('../model/admin');
 
 module.exports = function(passport) {
   passport.use(
@@ -25,7 +25,7 @@ module.exports = function(passport) {
           if (isMatch) {
             return done(null, user);
           } else {
-              console.log("sai mat khau roi ku :"+password)
+              console.log("sai mat khau roi :"+password)
             return done(null, false, req.flash('error','Password incorrect' ));
           }
         });
@@ -37,9 +37,15 @@ module.exports = function(passport) {
     done(null, user.id);
   });
 
-  passport.deserializeUser(function(id, done) {
-    User.findById(id, function(err, user) {
-      done(err, user);
-    });
+  passport.deserializeUser(async function(id, done) {
+    try {
+      const user = await User.findById(id);
+      if(!user)
+          done(null, false);
+      done(null, user);
+      console.log(user);
+  } catch (err) {
+      done(err);
+  }
   });
 };

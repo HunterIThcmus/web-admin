@@ -117,9 +117,10 @@
                         <!-- ============================================================== -->
                         <!-- Messages -->
                         <!-- ============================================================== -->
-                        <li class="nav-item dropdown">
+                        {{!-- <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" id="2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="font-24 mdi mdi-comment-processing"></i>
                             </a>
+                           
                             <div class="dropdown-menu dropdown-menu-right mailbox animated bounceInDown" aria-labelledby="2">
                                 <ul class="list-style-none">
                                     <li>
@@ -168,7 +169,8 @@
                                     </li>
                                 </ul>
                             </div>
-                        </li>
+                        </li> --}}
+                       
                         <!-- ============================================================== -->
                         <!-- End Messages -->
                         <!-- ============================================================== -->
@@ -176,20 +178,35 @@
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
+                          {{#if user}}
+                            <h4 style="color:burlywood" id="hello" >xin chào  {{user.name}}</h4>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/images/users/1.jpg" alt="user" class="rounded-circle" width="31"></a>
                             <div class="dropdown-menu dropdown-menu-right user-dd animated">
-                                 <a class="dropdown-item" href="/register"><i class="ti-wallet m-r-5 m-l-5"></i> Register</a>   
-                                <a class="dropdown-item" href="/login"><i class="ti-user m-r-5 m-l-5"></i> Login</a>
+                                 {{!-- <a class="dropdown-item" href="/register"><i class="ti-wallet m-r-5 m-l-5"></i> Register</a>   
+                                <a class="dropdown-item" href="/login"><i class="ti-user m-r-5 m-l-5"></i> Login</a> --}}
                                 <a class="dropdown-item" href="javascript:void(0)"><i class="ti-email m-r-5 m-l-5"></i> Inbox</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="javascript:void(0)"><i class="ti-settings m-r-5 m-l-5"></i> Account Setting</a>
+                                <a class="dropdown-item" href="javascript:void(0)"><i class="ti-settings m-r-5 m-l-5"></i> Cài đặt tài khoản</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="javascript:void(0)"><i class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
+                                <a class="dropdown-item" href="/logout"><i class="fa fa-power-off m-r-5 m-l-5"></i> Đăng xuất</a>
+                              {{#if user.permission}}
+                                 <div class="dropdown-divider"></div>
+                                 <a class="dropdown-item" href="/register"><i class="ti-wallet m-r-5 m-l-5"></i> Tạo tải khoản mới</a>   
+                                 {{/if}}
                                 <div class="dropdown-divider"></div>
-                                <div class="p-l-30 p-10"><a href="javascript:void(0)" class="btn btn-sm btn-success btn-rounded">View Profile</a></div>
+                                <div class="p-l-30 p-10"><a href="javascript:void(0)" class="btn btn-sm btn-success btn-rounded">Chỉnh sửa thông tin tài khoản</a></div>
                             </div>
                         </li>
+                        {{else}}
+                        
+                         <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="assets/images/users/1.jpg" alt="user" class="rounded-circle" width="31"></a>
+                            <div class="dropdown-menu dropdown-menu-right user-dd animated">
+                                <a class="dropdown-item" href="/login"><i class="ti-user m-r-5 m-l-5"></i> Login</a>
+                            </div>
+                            </li>
+                        {{/if}}
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
@@ -292,6 +309,7 @@
     <script src="dist/js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
     <script src="dist/js/custom.min.js"></script>
+    <script>document.getElementById("hello").style.marginTop = "20px";</script>
     <!-- this page js -->
     <script src="assets/extra-libs/multicheck/datatable-checkbox-init.js"></script>
     <script src="assets/extra-libs/multicheck/jquery.multicheck.js"></script>
