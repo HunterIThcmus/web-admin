@@ -1,41 +1,140 @@
 <div class="card">
-    <div class="card-body">
-        <h5 class="card-title m-b-0">Thêm sản phẩm</h5>
-        <div class="form-group m-t-20">
-            <label>Ngày sản xuất <small class="text-muted">dd/mm/yyyy</small></label>
-            <input type="text" class="form-control date-inputmask" id="date-mask" placeholder="Enter Date">
-        </div>
-        <div class="form-group">
-            <label>Tên sản phẩm <small class="text-muted"> Camera</small></label>
-            <input type="text" class="form-control phone-inputmask" id="phone-mask" placeholder="Enter Text">
-        </div>
-        <div class="form-group">
-            <label>Giá bán <small class="text-muted"> 999 999</small></label>
-            <input type="number" class="form-control international-inputmask" id="international-mask"
-                placeholder="International Phone Number">
-        </div>
-        <div class="form-group">
-            <label>Tên gian hàng <small class="text-muted">Thiết bị điện tử</small></label>
-            <input type="text" class="form-control xphone-inputmask" id="xphone-mask" placeholder="Enter Phone Number">
-        </div>
-        <div class="form-group row">
-            <label class="col-md-3">Đăng ảnh</label>
-            <div class="col-md-9">
-                <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="validatedCustomFile" required="">
-                    <label class="custom-file-label" for="validatedCustomFile">Chọn ảnh...</label>
-                    <div class="invalid-feedback">Example invalid custom file feedback</div>
+    <form method="POST">
+        <div class="card-body">
+            <h5 class="card-title m-b-0">Thêm sản phẩm</h5>
+            <div class="form-group m-t-20">
+                <label>Ngày sản xuất</label>
+                <input type="text" class="form-control date-inputmask" id="date-mask" placeholder="Enter Date"required="">
+            </div>
+            <div class="form-group">
+                <label>Tên sản phẩm </label>
+                <input required="" type="text" class="form-control phone-inputmask" name="productname"id="phone-mask" placeholder="Enter Text">
+            </div>
+            <div class="form-group">
+                <label>Giá bán <small class="text-muted"> 999 999</small></label>
+                <input type="number" class="form-control international-inputmask" name="price" id="international-mask"
+                    placeholder="999">
+            </div>
+            <div class="form-group">
+                <label>Tên gian hàng </label>
+                <input type="text" class="form-control xphone-inputmask" name="category"id="xphone-mask"
+                    placeholder="THiết bị điện tử" required="">
+            </div>
+            <div class="form-group row">
+                <label class="col-md-3">Đăng ảnh</label>
+                <div class="col-md-9">
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="validatedCustomFile" onchange="getfile()"
+                           >
+                        <label class="custom-file-label" for="validatedCustomFile">Chọn ảnh...</label>
+                        <div class="invalid-feedback">Example invalid custom file feedback</div>
+                    </div>
                 </div>
             </div>
+            <div class="form-group">
+                <input id="url" name="urlimage" hidden></input>
+            </div>
+            <div class="form-group">
+                <progress class="col-md-12" value="0" id="process" max="100">0%</progress>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Hình ảnh </label>
+            <img src="https://www.onlygfx.com/wp-content/uploads/2016/04/old-photo-camera.png" alt="" id="image"
+                width="150px" height="auto">
+            {{!-- <input type="text" class="form-control xphone-inputmask" id="xphone-mask" placeholder="v.v..."> --}}
         </div>
           <div class="form-group">
             <label>Mô tả sản phẩm </label>
-            <input type="text" class="form-control xphone-inputmask" id="xphone-mask" placeholder="v.v...">
+            <input type="text" class="form-control xphone-inputmask" id="detail" name="detail" placeholder="v.v...">
         </div>
-    </div>
-    <div class="border-top">
-        <div class="card-body">
-            <button type="button" class="btn btn-primary">Thêm sản phẩm</button>
-        </div>
+<div class="border-top">
+    <div class="card-body">
+        <button id="submit_button" type="submit" class="btn btn-primary">Thêm sản phẩm</button>
     </div>
 </div>
+</form>
+</div>
+ {{!-- var firebaseConfig = {
+        apiKey: "AIzaSyDarZhXQnvoV-7CM8jdKh6V0DHJuDu9ZWo",
+        authDomain: "mydata-f82f3.firebaseapp.com",
+        databaseURL: "https://mydata-f82f3.firebaseio.com",
+        projectId: "mydata-f82f3",
+        storageBucket: "mydata-f82f3.appspot.com",
+        messagingSenderId: "139587318494",
+        appId: "1:139587318494:web:7873921a44ff0ce0c5484f",
+        measurementId: "G-Y4E09R18C4"
+    }; --}}
+<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+<script>
+     var firebaseConfig = {
+       apiKey: "AIzaSyCvApF6lihh-4q83_cojCyuWQSI-NQmV7I",
+  authDomain: "sale-web-85c53.firebaseapp.com",
+  databaseURL: "https://sale-web-85c53.firebaseio.com",
+  projectId: "sale-web-85c53",
+  storageBucket: "sale-web-85c53.appspot.com",
+  messagingSenderId: "947753850000",
+  appId: "1:947753850000:web:9b207fbcc8d60074a77415",
+  measurementId: "G-VESTDCLBR0"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    // firebase.analytics();
+
+    var selectedFile;
+
+    function getfile() {
+        var pic = document.getElementById("validatedCustomFile");
+
+        // selected file is that file which user chosen by html form 
+        selectedFile = pic.files[0];
+
+        // make save button disabled for few seconds that has id='submit_link' 
+        document.getElementById("submit_button").setAttribute('disabled', 'true');
+        myfunction(); // call below written function 
+    }
+
+    function myfunction() {
+        // select unique name for everytime when image uploaded 
+        // Date.now() is function that give current timestamp 
+        var name = "product_image" + Date.now();
+
+        // make ref to your firebase storage and select images folder 
+        var storageRef = firebase.storage().ref('/images/' + name);
+
+        // put file to firebase  
+        var uploadTask = storageRef.put(selectedFile);
+
+        // all working for progress bar that in html 
+        // to indicate image uploading... report 
+        uploadTask.on('state_changed', function (snapshot) {
+            var progress =
+                (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            var uploader = document.getElementById('process');
+            uploader.value = progress;
+            switch (snapshot.state) {
+                case firebase.storage.TaskState.PAUSED:
+                    console.log('Upload is paused');
+                    break;
+                case firebase.storage.TaskState.RUNNING:
+                    console.log('Upload is running');
+                    break;
+            }
+        }, function (error) {
+            console.log(error);
+        }, function () {
+            // get the uploaded image url back 
+            uploadTask.snapshot.ref.getDownloadURL().then(
+                function (downloadURL) {
+                    // You get your url from here 
+                    //console.log('File available at', downloadURL);
+                    document.getElementById('url').value = downloadURL;
+                    $('#image').attr("src", downloadURL);
+                    // alert(document.getElementById('url').value);
+                    // print the image url  
+                    console.log(downloadURL);
+                    document.getElementById('submit_button').removeAttribute('disabled');
+                });
+        });
+    }
+</script>

@@ -5,7 +5,11 @@ const db = mongoose.connection;
 const useraccoutschema = new mongoose.Schema({
     name: String,
     username: String,
-    password: String
+    password: String,
+    phone_number: String,
+    sex: Boolean,
+    address: String,
+    band:Boolean
     },
     {
         collection: 'useraccout'

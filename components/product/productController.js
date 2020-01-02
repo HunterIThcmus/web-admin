@@ -15,3 +15,12 @@ module.exports.Category = async (req,res,next) =>{
         else
             res.render('products', { list: value, user: req.user})       
 }
+
+module.exports.AddProduct =  async (req,res,next)=>{
+    await productService.addProduct(res,req.body.productname,req.body.price,req.category,req.body.urlimage,"123");
+    console.log(req.body.productname+" + "+ req.body.category +"  +  " +req.body.urlimage);
+    // Category()
+    // res.render('products',{title:"products"});
+    this.Category(req,res,next);
+
+}

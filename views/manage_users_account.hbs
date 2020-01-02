@@ -10,7 +10,7 @@
                         <th>địa chỉ mail</th>
                         <th>Số Điện thoại</th>
                         <th>Giới tính</th>
-                        <th>Mật khẩu</th>
+                        <th>Địa chỉ</th>
                         <th></th>
                     
                     </tr>
@@ -22,9 +22,9 @@
                         <td>11</td>
                         <td>{{this.name}}</td>
                         <td>{{this.username}}</td>
-                        <td>0123456789</td>
-                        <td>Nam</td>
-                        <td>aaaaaaaa</td>
+                        <td>{{this.phone_number}}</td>
+                        <td> {{#if user.sex}} name {{else}} Nữ {{/if}}</td>
+                        <td>{{this.address}}</td>
                          
                         <td><button class="btn btn-primary" type="button" onclick="location.href='/edit_user_profile?q={{this._id}}'">Chỉnh sửa</button>
                             <button class="btn btn-primary" type="button">Xóa</button></td>

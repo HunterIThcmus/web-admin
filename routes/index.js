@@ -35,7 +35,7 @@ router.get('/sales', function(req, res, next) {
 //   res.render('products', { title: 'Express' });
 // });
 
-router.get('/addproduct', function(req, res, next) {
-  res.render('addproduct', { title: 'Express' });
-});
+// router.get('/addproduct', function(req, res, next) {
+//   res.render('addproduct', { title: 'Express' });
+// });
 module.exports = router;
