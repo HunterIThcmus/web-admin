@@ -40,6 +40,18 @@ app.use(session({ secret: process.env.SESSION_SECRET }));
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use((req,res,next)=>{
+  if(req.user)
+  {
+    res.locals.isLoggedIn=true;
+    res.locals.user=req.user;
+  }
+  else{
+    res.locals.isLoggedIn=false;
+  }
+  next();
+})
+
 // Connect flash
 app.use(flash());
 

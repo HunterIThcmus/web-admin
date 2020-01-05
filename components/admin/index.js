@@ -15,6 +15,10 @@ router.get('/register', function (req, res, next) {
     res.render('register', { title: 'Register',errors });
 });
 
+router.get('/info', (req, res, next) => {
+    res.render('edit_admin_profile', { title: 'Thông tin cá nhân'});
+});
+
 router.post('/register', userController.createUser);
 
 
@@ -24,5 +28,7 @@ router.get('/logout', (req, res) => {
     req.logout();
     res.redirect('/');
 });
+
+router.post('/info',userController.editAdminInfo);
 
 module.exports = router;
