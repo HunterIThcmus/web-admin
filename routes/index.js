@@ -24,9 +24,9 @@ router.get('/top10', function(req, res, next) {
 //   res.render('edit_user_profile', { title: 'Express' });
 // });
 
-router.get('/orders', function(req, res, next) {
-  res.render('orders', { title: 'Express' });
-});
+// router.get('/orders', function(req, res, next) {
+//   res.render('orders', { title: 'Express' });
+// });
 router.get('/sales', function(req, res, next) {
   res.render('sales', { title: 'Express' });
 });

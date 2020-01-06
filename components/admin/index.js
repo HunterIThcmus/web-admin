@@ -16,7 +16,13 @@ router.get('/register', function (req, res, next) {
 });
 
 router.get('/info', (req, res, next) => {
-    res.render('edit_admin_profile', { title: 'Thông tin cá nhân'});
+    if(res.locals.isLoggedIn)
+    {
+        res.render('edit_admin_profile', { title: 'Thông tin cá nhân'});
+    }
+    else{
+        res.render('error');
+    }
 });
 
 router.post('/register', userController.createUser);

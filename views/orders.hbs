@@ -5,123 +5,32 @@
             <table id="zero_config" class="table table-striped table-bordered">
                 <thead>
                     <tr>
-                        <th>Mã sản phẩm</th>
-                        <th>Tên sản phẩm</th>
-                        <th>Người mua hàng</th>
-                        <th>Số lượng</th>
-                        <th>Thành tiền</th>
+                        <th>Mã đơn hàng</th>
+                        <th>Tên khách hàng</th>
+                        <th>Ngày đặt hàng</th>
                         <th>Trạng thái</th>
-                    
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
+                    {{#each list}}
                     <tr>
-                        <td>EEE000</td>
-                        <td>Quần jeans đen</td>
-                        <td>Pham_van_A</td>
-                        <td>1</td>
-                        <td>350.000đ</td>
-                        <td>Đã giao hàng</td>
+                        <td>{{this._id}}</td>
+                        <td>{{this.name}}</td>
+                        <td id="date">{{this.date}}</td>
+                        <td>{{this.status}}</td>
+                        <td><button class="btn btn-primary" type="button"
+                                onclick="location.href='/edit_order?id={{this._id}}'">Chi tiết</button></td>
                     </tr>
-                   <tr>
-                        <td>EEE000</td>
-                        <td>Quần jeans đen</td>
-                        <td>Pham_van_B</td>
-                        <td>1</td>
-                        <td>350.000đ</td>
-                        <td>Đang giao hàng</td>
-                    </tr>
-                     <tr>
-                        <td>EEE000</td>
-                        <td>Quần jeans đen</td>
-                        <td>Pham_van_C</td>
-                        <td>1</td>
-                        <td>350.000đ</td>
-                        <td>Đang chờ xác nhận</td>
-                    </tr>
-                       <tr>
-                        <td>EEE000</td>
-                        <td>Quần jeans đen</td>
-                        <td>Pham_van_A</td>
-                        <td>1</td>
-                        <td>350.000đ</td>
-                        <td>Đã giao hàng</td>
-                    </tr>
-                   <tr>
-                        <td>EEE000</td>
-                        <td>Quần jeans đen</td>
-                        <td>Pham_van_B</td>
-                        <td>1</td>
-                        <td>350.000đ</td>
-                        <td>Đang giao hàng</td>
-                    </tr>
-                     <tr>
-                        <td>EEE000</td>
-                        <td>Quần jeans đen</td>
-                        <td>Pham_van_C</td>
-                        <td>1</td>
-                        <td>350.000đ</td>
-                        <td>Đang chờ xác nhận</td>
-                    </tr>
-                       <tr>
-                        <td>EEE000</td>
-                        <td>Quần jeans đen</td>
-                        <td>Pham_van_A</td>
-                        <td>1</td>
-                        <td>350.000đ</td>
-                        <td>Đã giao hàng</td>
-                    </tr>
-                   <tr>
-                        <td>EEE000</td>
-                        <td>Quần jeans đen</td>
-                        <td>Pham_van_B</td>
-                        <td>1</td>
-                        <td>350.000đ</td>
-                        <td>Đang giao hàng</td>
-                    </tr>
-                     <tr>
-                        <td>EEE000</td>
-                        <td>Quần jeans đen</td>
-                        <td>Pham_van_C</td>
-                        <td>1</td>
-                        <td>350.000đ</td>
-                        <td>Đang chờ xác nhận</td>
-                    </tr>
-                    ody>
-                    <tr>
-                        <td>EEE000</td>
-                        <td>Quần jeans đen</td>
-                        <td>Pham_van_A</td>
-                        <td>1</td>
-                        <td>350.000đ</td>
-                        <td>Đã giao hàng</td>
-                    </tr>
-                   <tr>
-                        <td>EEE000</td>
-                        <td>Quần jeans đen</td>
-                        <td>Pham_van_B</td>
-                        <td>1</td>
-                        <td>350.000đ</td>
-                        <td>Đang giao hàng</td>
-                    </tr>
-                     <tr>
-                        <td>EEE000</td>
-                        <td>Quần jeans đen</td>
-                        <td>Pham_van_C</td>
-                        <td>1</td>
-                        <td>350.000đ</td>
-                        <td>Đang chờ xác nhận</td>
-                    </tr>
+                    {{/each}}
                 </tbody>
                 <tfoot>
                     <tr>
-                        <th>Mã sản phẩm</th>
-                        <th>Tên sản phẩm</th>
-                        <th>Người mua hàng</th>
-                        <th>Số lượng</th>
-                        <th>Thành tiền</th>
+                        <th>Mã đơn hàng</th>
+                        <th>Tên khách hàng</th>
+                        <th>Ngày đặt hàng</th>
                         <th>Trạng thái</th>
-                    
+                        <th></th>
                     </tr>
                 </tfoot>
             </table>
@@ -129,3 +38,11 @@
     </div>
 </div>
 
+<script>
+    formatDate(date) => {
+
+        let formatted_date = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate() + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds()
+        return formatted_date;
+    }
+    $('#date').formatDate();
+</script>
