@@ -2,13 +2,11 @@
     <form method="POST">
         <div class="card-body">
             <h5 class="card-title m-b-0">Thêm sản phẩm</h5>
-            <div class="form-group m-t-20">
-                <label>Ngày sản xuất</label>
-                <input type="text" class="form-control date-inputmask" id="date-mask" placeholder="Enter Date"required="">
-            </div>
+            <br>
             <div class="form-group">
                 <label>Tên sản phẩm </label>
-                <input required="" type="text" class="form-control phone-inputmask" name="productname"id="phone-mask" placeholder="Enter Text">
+                <input required="" type="text" class="form-control phone-inputmask" name="productname" id="phone-mask"
+                    placeholder="Enter Text">
             </div>
             <div class="form-group">
                 <label>Giá bán <small class="text-muted"> 999 999</small></label>
@@ -16,16 +14,36 @@
                     placeholder="999">
             </div>
             <div class="form-group">
-                <label>Tên gian hàng </label>
-                <input type="text" class="form-control xphone-inputmask" name="category"id="xphone-mask"
-                    placeholder="THiết bị điện tử" required="">
+                <select class="input" name="category" style="width: 100%; height:36px;" data-select2-id="1"
+                    tabindex="-1" aria-hidden="true"required>
+
+                    <option disabled="" selected>Tên gian hàng</option>
+                    <option>Áo nữ</option>
+
+                    <option value="thoi_trang_nam">Thời trang nam</option>
+                    <option value="thoi_trang_nu">Thời trang nữ</option>
+                    <option value="giay">Giầy </option>
+                    <option value="thiet_bi_gia_dung">hiết bị gia dụng</option>
+
+
+                </select>
             </div>
+             <div class="form-group">
+                <label>màu</label>
+                <input type="text" class="form-control international-inputmask" name="color" 
+                    placeholder="blue" required>
+            </div>
+            
+            {{!-- <div class="form-group">
+                <label>Tên gian hàng </label>
+                <input type="text" class="form-control xphone-inputmask" name="category" id="xphone-mask"
+                    placeholder="THiết bị điện tử" required="">
+            </div> --}}
             <div class="form-group row">
                 <label class="col-md-3">Đăng ảnh</label>
                 <div class="col-md-9">
                     <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="validatedCustomFile" onchange="getfile()"
-                           >
+                        <input type="file" class="custom-file-input" id="validatedCustomFile" onchange="getfile()">
                         <label class="custom-file-label" for="validatedCustomFile">Chọn ảnh...</label>
                         <div class="invalid-feedback">Example invalid custom file feedback</div>
                     </div>
@@ -44,18 +62,18 @@
                 width="150px" height="auto">
             {{!-- <input type="text" class="form-control xphone-inputmask" id="xphone-mask" placeholder="v.v..."> --}}
         </div>
-          <div class="form-group">
+        <div class="form-group">
             <label>Mô tả sản phẩm </label>
-            <input type="text" class="form-control xphone-inputmask" id="detail" name="detail" placeholder="v.v...">
+            <input type="text" class="form-control xphone-inputmask" id="detail" name="details" placeholder="v.v...">
         </div>
-<div class="border-top">
-    <div class="card-body">
-        <button id="submit_button" type="submit" class="btn btn-primary">Thêm sản phẩm</button>
-    </div>
+        <div class="border-top">
+            <div class="card-body">
+                <button id="submit_button" type="submit" class="btn btn-primary">Thêm sản phẩm</button>
+            </div>
+        </div>
+    </form>
 </div>
-</form>
-</div>
- {{!-- var firebaseConfig = {
+{{!-- var firebaseConfig = {
         apiKey: "AIzaSyDarZhXQnvoV-7CM8jdKh6V0DHJuDu9ZWo",
         authDomain: "mydata-f82f3.firebaseapp.com",
         databaseURL: "https://mydata-f82f3.firebaseio.com",
@@ -65,9 +83,8 @@
         appId: "1:139587318494:web:7873921a44ff0ce0c5484f",
         measurementId: "G-Y4E09R18C4"
     }; --}}
-<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
-<script>
-     var firebaseConfig = {
+
+{{!-- var firebaseConfig = {
        apiKey: "AIzaSyCvApF6lihh-4q83_cojCyuWQSI-NQmV7I",
   authDomain: "sale-web-85c53.firebaseapp.com",
   databaseURL: "https://sale-web-85c53.firebaseio.com",
@@ -76,6 +93,19 @@
   messagingSenderId: "947753850000",
   appId: "1:947753850000:web:9b207fbcc8d60074a77415",
   measurementId: "G-VESTDCLBR0"
+    }; --}}
+<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+<script>
+
+    var firebaseConfig = {
+        apiKey: "AIzaSyDarZhXQnvoV-7CM8jdKh6V0DHJuDu9ZWo",
+        authDomain: "mydata-f82f3.firebaseapp.com",
+        databaseURL: "https://mydata-f82f3.firebaseio.com",
+        projectId: "mydata-f82f3",
+        storageBucket: "mydata-f82f3.appspot.com",
+        messagingSenderId: "139587318494",
+        appId: "1:139587318494:web:7873921a44ff0ce0c5484f",
+        measurementId: "G-Y4E09R18C4"
     };
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
@@ -86,10 +116,8 @@
     function getfile() {
         var pic = document.getElementById("validatedCustomFile");
 
-        // selected file is that file which user chosen by html form 
         selectedFile = pic.files[0];
 
-        // make save button disabled for few seconds that has id='submit_link' 
         document.getElementById("submit_button").setAttribute('disabled', 'true');
         myfunction(); // call below written function 
     }

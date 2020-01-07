@@ -27,3 +27,31 @@ module.exports.EditUsersAccount=async (req, res, next) => {
 module.exports.Block= async(req,res,next) =>{
     
 }
+
+module.exports.EditUser= async (req,res,next) =>{
+    if(req.body.action == "lock"){
+        try {
+       await UserService.lockUser(res,req.query.q,true);
+            
+        } catch (error) {
+        }
+    } else if(req.body.action=="delete"){
+        try {
+        await UserService.deleteUser(res,req.query.q);
+            
+        } catch (error) {
+            
+        }
+    }
+    else{
+        try {
+        await UserService.lockUser(res,req.query.q,false);
+            
+        } catch (error) {
+            
+        }
+        
+
+    }
+   this.LoadUsers(req, res, next);
+}

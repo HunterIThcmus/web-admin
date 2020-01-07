@@ -233,6 +233,7 @@
             <!-- Sidebar scroll-->
             <div class="scroll-sidebar">
                 <!-- Sidebar navigation-->
+                {{#if isLoggedIn}}
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav" class="p-t-30">
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
@@ -253,6 +254,7 @@
                                     class="hide-menu">Được ưu chuộng</span></a></li>
                     </ul>
                 </nav>
+                {{/if}}
             </div>
             <!-- End Sidebar scroll-->
         </aside>

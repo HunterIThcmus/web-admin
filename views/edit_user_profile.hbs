@@ -1,4 +1,4 @@
-<form class="form-horizontal">
+<form class="form-horizontal" method="POST">
     <div class="card-body">
         <h4 class="card-title">Thông tin cá nhân</h4>
         <div class="form-group row">
@@ -40,7 +40,18 @@
     </div>
     <div class="border-top">
         <div class="card-body">
-            <button type="button" class="btn btn-primary">Lưu</button>
+            <button type="submit"name= "action" value ="delete" class="btn btn-primary">Xóa</button>
+             {{#if value.band}}
+            <button type="submit" name= "action" value ="unlock" class="btn btn-primary">Mở Khóa</button>
+            {{else}}
+            <button type="submit" name= "action" value ="lock" class="btn btn-primary">Khóa</button>
+            {{/if}}
+
+        </div>
+    </div>
+     <div class="border-top">
+        <div class="card-body">
+         
         </div>
     </div>
 </form>

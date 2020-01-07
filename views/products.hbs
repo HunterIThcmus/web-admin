@@ -56,34 +56,17 @@
 </head>
 
 <body dir="ltr">
-    <div>
-        <div class="form-group row">
-            <label class="col-md-3 m-t-15">Chọn gian hàng</label>
-            <div class="col-md-9">
-                <select class="select2 form-control custom-select select2-hidden-accessible"
-                    style="width: 100%; height:36px;" data-select2-id="1" tabindex="-1" aria-hidden="true">
-                    <option data-select2-id="3">apple</option>
-                    <optgroup label="Đồ điện tử">
-                        <option value="AK">sony</option>
-                        <option value="HI">apple</option>
-                    </optgroup>
-                    <optgroup label="Thời trang">
-                        <option value="CA">Giày nam</option>
-                        <option value="NV">Quần nữ</option>
-                        <option value="OR">Giầy nữ</option>
-                        <option value="WA">Đồng hồ</option>
-                    </optgroup>
-                </select>
-            </div>
-        </div>
-        <button type="button" class="btn btn-success" onclick="location.href='addproduct'">Thêm sản phẩm</button>
-    </div>
+   
     <!--================Category Product Area =================-->
     <section class="cat_product_area section_gap">
         <div class="container">
             <div class="row flex-row-reverse">
                 <div class="col-lg-9">
+                     <div>
+                            <button type="button" class="btn btn-success" onclick="location.href='addproduct'">Thêm sản phẩm</button>
+                        </div>
                     <div class="product_top_bar">
+                       
                         <div class="left_dorp">
                             <select class="sorting" id="sort-selected" onchange="changeSort()">
                                 <option value="1" {{#if is1}}selected{{/if}}>Giá tăng dần</option>
@@ -112,7 +95,7 @@
                                             <a href="#">
                                                 <i class="lnr lnr-pencil"></i>
                                             </a>
-                                            <a href="#">
+                                            <a href="/deleteproduct?q={{this._id}}">
                                                 <i class="lnr lnr-trash"></i>
                                             </a>
                                         </div>

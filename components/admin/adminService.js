@@ -60,5 +60,5 @@ module.exports.CreateSuperUser = () => {
                 console.log(doc);
             }
         });
-        return result.save();
+       // return result.save();
     }

@@ -7,7 +7,9 @@ router.get('/manage_users_account', userController.LoadUsers)
 
 router.get("/edit_user_profile",userController.EditUsersAccount)
 
-router.get("/block",userController.Block)
+router.post("/edit_user_profile",userController.EditUser)
 
+
+router.get("/block",userController.Block)
 
 module.exports = router;

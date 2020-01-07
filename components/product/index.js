@@ -11,6 +11,8 @@ router.get('/addproduct', function(req, res, next) {
   res.render('addproduct.hbs', { title: 'Express' });
 });
 
+router.get('/deleteproduct',productController.DeleteProduct);
+
 router.get('/orders',productController.Order);
 
 router.get('/edit_order',productController.infoOrder);

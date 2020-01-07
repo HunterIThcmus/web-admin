@@ -13,14 +13,18 @@ module.exports.createUser = async (req, res, next) => {
 module.exports.loginUser = async (req, res, next) => {
 
     //create super andmin if it not exists
+    try {
     await UserService.CreateSuperUser();
+    } catch (error) {
+        
+    }
 
     try {
         //await UserService.loginUser(req.body.username,req.body.password);
         console.log("login appear");
 
         await passport.authenticate('local', {
-            successRedirect: '/',
+            successRedirect: '/index',
             failureRedirect: '/login',
             failureFlash: true
         })(req, res, next);

@@ -77,11 +77,10 @@ module.exports.getCateQuery = async (id, s, l, sk, search) => {
     return result;
 }
 
-module.exports.addProduct =  (res,name,price,category,img,detail) =>{
+module.exports.addProduct =  (res,name,price,category,img,color,detail) =>{
     var newproduct;
     try {   
-    newproduct = new ProductModel({name,price,category,detail,categoryid:"1",img});
-        
+    newproduct = new ProductModel({name,price,category,categoryid:category,color: color,img:img,details:detail});
     } catch (error) {
         console.log(error)
         throw(error)
@@ -89,7 +88,9 @@ module.exports.addProduct =  (res,name,price,category,img,detail) =>{
     console.log(newproduct);
     return newproduct.save();
 }
-
+module.exports.deleteproduct= async(id)=>{
+    await ProductModel.findOneAndDelete({'_id': id});
+}
 module.exports.getAllOrder = async () => {
     const result = await OrderModel.find({});
     return result;
@@ -109,7 +110,7 @@ module.exports.editOrder = async (res, id, newinfo) => {
             console.log(doc);
         }
     });
-    return result.save();
+   // return result.save();
 }
 
 module.exports.deleteOrderById = async (id) => {

@@ -138,11 +138,15 @@ module.exports.Category = async (req, res, next) => {
 }
 
 module.exports.AddProduct = async (req, res, next) => {
-    await productService.addProduct(res, req.body.productname, req.body.price, req.category, req.body.urlimage, "123");
-    console.log(req.body.productname + " + " + req.body.category + "  +  " + req.body.urlimage);
+    await productService.addProduct(res, req.body.productname, req.body.price, req.body.category, req.body.urlimage,req.body.color,req.body.details);
+    console.log(req.body.productname + " + " + req.body.color + "  +  " + req.body.details);
     // Category()
     // res.render('products',{title:"products"});
-    this.Category(req, res, next);
+    res.redirect('products');
+}
+module.exports.DeleteProduct =async(req,res,next) =>{
+   await productService.deleteproduct(req.query.q);
+   res.redirect('back');
 }
 
 module.exports.Order = async (req, res, next) => {
