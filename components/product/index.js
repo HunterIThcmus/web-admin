@@ -19,4 +19,6 @@ router.post('/edit_order',productController.editOrder);
 
 router.get('/delete_order',productController.deleteOrder);
 
+router.get('/top10',productController.getTop10);
+
 module.exports = router;

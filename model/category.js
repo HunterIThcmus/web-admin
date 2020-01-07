@@ -8,12 +8,16 @@ const categoryschema = new mongoose.Schema({
     category: String,
     details: String,
     categoryid: String,
-    img: String
-    },
+    img: String,
+    views: { type: Number, default: 0 },
+    sold: { type: Number, default: 0 },
+    brand:{ type: String, default: "" },
+    color: { type: String, default: "" }
+},
     {
         collection: 'category'
     });
-
+categoryschema.index({'$**': 'text'});
 const cate = db.useDb("mydb").model("cate", categoryschema);
 
 module.exports = cate;

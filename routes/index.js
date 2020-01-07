@@ -12,9 +12,9 @@ router.get('/index', function(req, res, next) {
   res.render('index', { title: 'Express',user: req.user });
 });
 
-router.get('/top10', function(req, res, next) {
-  res.render('top10', { title: 'Express' });
-});
+// router.get('/top10', function(req, res, next) {
+//   res.render('top10', { title: 'Express' });
+// });
 
 // router.get('/manage_users_account', function(req, res, next) {
 //   res.render('manage_users_account', { title: 'Express' });

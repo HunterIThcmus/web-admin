@@ -9,90 +9,28 @@
                         <th>Tên sản phẩm</th>
                         <th>Mã</th>
                         <th>Số lượng</th>
-                        <th>Doanh thu</th>
+                        {{!-- <th>Doanh thu</th> --}}
                     </tr>
                 </thead>
                 <tbody>
+                    {{#each value}}
+
                     <tr>
-                        <td>1</td>
-                        <td>Quần tây đen</td>
-                        <td>00BB11</td>
-                        <td>33</td>
-                        <td>4.550.000đ</td>
+                        <td>{{inc @index}}</td>
+                        <td>{{this.name}}</td>
+                        <td>{{this._id}}</td>
+                        <td>{{this.sold}}</td>
+                        {{!-- <td>4.550.000đ</td> --}}
                     </tr>
-                      <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Quần tây đen</td>
-                        <td>00BB11</td>
-                        <td>33</td>
-                        <td>4.550.000đ</td>
-                    </tr>
-                      <tbody>
-                    <tr>
-                        <td>2</td>
-                        <td>Quần tây nâu</td>
-                        <td>00BB12</td>
-                        <td>33</td>
-                        <td>4.000.000đ</td>
-                    </tr>
-                      <tr>
-                        <td>2</td>
-                        <td>Quần tây nâu</td>
-                        <td>00BB12</td>
-                        <td>33</td>
-                        <td>4.000.000đ</td>
-                    </tr>
-                      <tr>
-                        <td>2</td>
-                        <td>Quần tây nâu</td>
-                        <td>00BB12</td>
-                        <td>33</td>
-                        <td>4.000.000đ</td>
-                    </tr>
-                      <tr>
-                        <td>2</td>
-                        <td>Quần tây nâu</td>
-                        <td>00BB12</td>
-                        <td>33</td>
-                        <td>4.000.000đ</td>
-                    </tr>
-                      <tr>
-                        <td>2</td>
-                        <td>Quần tây nâu</td>
-                        <td>00BB12</td>
-                        <td>33</td>
-                        <td>4.000.000đ</td>
-                    </tr>
-                      <tr>
-                        <td>2</td>
-                        <td>Quần tây nâu</td>
-                        <td>00BB12</td>
-                        <td>33</td>
-                        <td>4.000.000đ</td>
-                    </tr>
-                      <tr>
-                        <td>2</td>
-                        <td>Quần tây nâu</td>
-                        <td>00BB12</td>
-                        <td>33</td>
-                        <td>4.000.000đ</td>
-                    </tr>
-                      <tr>
-                        <td>2</td>
-                        <td>Quần tây nâu</td>
-                        <td>00BB12</td>
-                        <td>33</td>
-                        <td>4.000.000đ</td>
-                    </tr>
+                    {{/each}}
                 </tbody>
                 <tfoot>
-                     <tr>
+                    <tr>
                         <th>Xếp hạng</th>
                         <th>Tên sản phẩm</th>
                         <th>Mã</th>
                         <th>Số lượng</th>
-                        <th>Doanh thu</th>
+                        {{!-- <th>Doanh thu</th> --}}
                     </tr>
                 </tfoot>
             </table>
@@ -102,7 +40,7 @@
 
 
 {{!-- top 10 gian hang ban chay nhat --}}
-<br/>
+<br>
 <div class="card">
     <div class="card-body">
         <h5 class="card-title">Danh sách 10 gian hàng có sản phẩm bán chạy nhất</h5>
@@ -114,10 +52,14 @@
                         <th>Tên gian hàng</th>
                         <th>Mã gian hàng</th>
                         <th>Số lượng sản phẩm</th>
-                        <th>Doanh thu</th
+                        <th>Doanh thu</th </tr> </thead> <tbody>
+                    <tr>
+                        <td></td>
+                        <td>Quần nam</td>
+                        <td>00AA3</td>
+                        <td>61</td>
+                        <td>20.000.000đ</td>
                     </tr>
-                </thead>
-                <tbody>
                     <tr>
                         <td>1</td>
                         <td>Quần nam</td>
@@ -125,58 +67,50 @@
                         <td>61</td>
                         <td>20.000.000đ</td>
                     </tr>
-                     <tr>
+                    <tr>
                         <td>1</td>
                         <td>Quần nam</td>
                         <td>00AA3</td>
                         <td>61</td>
                         <td>20.000.000đ</td>
                     </tr>
-                     <tr>
+                    <tr>
                         <td>1</td>
                         <td>Quần nam</td>
                         <td>00AA3</td>
                         <td>61</td>
                         <td>20.000.000đ</td>
                     </tr>
-                     <tr>
+                    <tr>
                         <td>1</td>
                         <td>Quần nam</td>
                         <td>00AA3</td>
                         <td>61</td>
                         <td>20.000.000đ</td>
                     </tr>
-                     <tr>
+                    <tr>
                         <td>1</td>
                         <td>Quần nam</td>
                         <td>00AA3</td>
                         <td>61</td>
                         <td>20.000.000đ</td>
                     </tr>
-                     <tr>
+                    <tr>
                         <td>1</td>
                         <td>Quần nam</td>
                         <td>00AA3</td>
                         <td>61</td>
                         <td>20.000.000đ</td>
                     </tr>
-                     <tr>
-                        <td>1</td>
-                        <td>Quần nam</td>
-                        <td>00AA3</td>
-                        <td>61</td>
-                        <td>20.000.000đ</td>
-                    </tr>
-                   
-                </tbody>
+
+                    </tbody>
                 <tfoot>
                     <tr>
-                       >
                         <th>Xếp hạng</th>
                         <th>Tên gian hàng</th>
                         <th>Mã gian hàng</th>
                         <th>Số lượng sản phẩm</th>
-                        <th>Doanh thu</th
+                        <th>Doanh thu</th>
                     </tr>
                 </tfoot>
             </table>

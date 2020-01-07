@@ -85,15 +85,15 @@
                 <div class="col-lg-9">
                     <div class="product_top_bar">
                         <div class="left_dorp">
-                            <select class="sorting">
-                                <option value="1">mặc định phân loại</option>
-                                <option value="2">Sắp xếp mặc định 01</option>
-                                <option value="4">Sắp xếp mặc định 02</option>
+                            <select class="sorting" id="sort-selected" onchange="changeSort()">
+                                <option value="1" {{#if is1}}selected{{/if}}>Giá tăng dần</option>
+                                <option value="-1" {{#if is_1}}selected{{/if}}>Giá giảm dần</option>
                             </select>
-                            <select class="show">
-                                <option value="1">Hiển thị 12</option>
-                                <option value="2">Hiển thị 14</option>
-                                <option value="4">Hiển thị 16</option>
+                            <select id="limit-selected" onchange="changeLimit()" class="show">
+                                <option value="6" {{#if is6}}selected{{/if}}>Hiển thị 6</option>
+                                <option value="12" {{#if is12}}selected{{/if}}>Hiển thị 12</option>
+                                <option value="20" {{#if is20}}selected{{/if}}>Hiển thị 20</option>
+                                <option value="30" {{#if is30}}selected{{/if}}>Hiển thị 30</option>
                             </select>
                         </div>
                     </div>
@@ -105,7 +105,7 @@
                                 <div class="single-product">
                                     <div class="product-img">
                                         <img class="card-img" src="{{this.img}}" alt="">
-                                        <div class="p_icon">
+                                        <div class="p_icon" >
                                             <a href="single-product">
                                                 <i class="ti-eye"></i>
                                             </a>
@@ -128,7 +128,19 @@
                                 </div>
                             </div>
                             {{/each}}
-
+                            <div class="col-lg-12 text-center">
+                            <ul class="pagination justify-content-center">
+                                {{#each array}}
+                                <li class="page-item
+                                {{#if isActive}}
+                                active
+                                {{/if}}
+                                "><a class="page-link"
+                                        onclick="addUrlParameter('skip',NumberSkip({{this.pagenum}}))">{{this.pagenum}}</a>
+                                </li>
+                                {{/each}}
+                            </ul>
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -137,86 +149,56 @@
                     <div class="left_sidebar_area">
                         <aside class="left_widgets p_filter_widgets">
                             <div class="l_w_title">
-                                <h3>Duyệt qua danh mục</h3>
+                                <h3>Danh mục</h3>
                             </div>
                             <div class="widgets_inner">
                                 <ul class="list">
                                     <li>
-                                        <a href="#">Cá đông lạnh</a>
+                                        <a onclick="addUrlParameter('q','thoi_trang_nam')">Thời trang nam</a>
                                     </li>
                                     <li>
-                                        <a href="#">Cá khô</a>
+                                        <a onclick="addUrlParameter('q','thoi_trang_nu')">Thời trang nữ</a>
                                     </li>
                                     <li>
-                                        <a href="#">Cá tươi</a>
+                                        <a onclick="addUrlParameter('q','giay')">Giày</a>
                                     </li>
                                     <li>
-                                        <a href="#">Thịt thay thế</a>
+                                        <a onclick="addUrlParameter('q','do_uong')">Đồ uống</a>
                                     </li>
                                     <li>
-                                        <a href="#">Cá tươi</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Thịt thay thế</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Thịt</a>
+                                        <a onclick="addUrlParameter('q','thuc_pham')">Thực phẩm</a>
                                     </li>
                                 </ul>
                             </div>
                         </aside>
 
-                        <aside class="left_widgets p_filter_widgets">
-                            <div class="l_w_title">
-                                <h3>Thương hiệu sản phẩm</h3>
-                            </div>
-                            <div class="widgets_inner">
-                                <ul class="list">
-                                    <li>
-                                        <a href="#">táo</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Asus</a>
-                                    </li>
-                                    <li class="active">
-                                        <a href="#">Gionee</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Micromax</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Samsung</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </aside>
+                        <aside class="left_widgets p_filter_widgets sidebar_box_shadow">
+                        <div class="l_w_title">
+                            <h3>Bộ lọc</h3>
+                        </div>
+                        <div class="widgets_inner">
+                            <ul class="list">
+                                <p style="font-size: 16px;">Thương hiệu</p>
+                                <li>
+                                    <a onclick="addUrlParameter('b','chanel')">- Chanel</a>
+                                </li>
+                                <li>
+                                    <a onclick="addUrlParameter('b','gucci')">- Gucci</a>
+                                </li>
+                                <li >
+                                    <a onclick="addUrlParameter('b','peaceminusone')">- Peaceminusone</a>
+                                </li>
+                                <li>
+                                    <a onclick="addUrlParameter('b','nike')">- Nike</a>
+                                </li>
+                                <li>
+                                    <a onclick="addUrlParameter('b','hm')">- H&M</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </aside>
 
-                        <aside class="left_widgets p_filter_widgets">
-                            <div class="l_w_title">
-                                <h3>Bộ lọc màu</h3>
-                            </div>
-                            <div class="widgets_inner">
-                                <ul class="list">
-                                    <li>
-                                        <a href="#">Đen</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Da đen</a>
-                                    </li>
-                                    <li class="active">
-                                        <a href="#">Đen với đỏ</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Vàng</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Spacegrey</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </aside>
-
-                        <aside class="left_widgets p_filter_widgets">
+                        {{!-- <aside class="left_widgets p_filter_widgets">
                             <div class="l_w_title">
                                 <h3>Bộ lọc giá</h3>
                             </div>
@@ -229,7 +211,8 @@
                                     </div>
                                 </div>
                             </div>
-                        </aside>
+                        </aside> --}}
+                        
                     </div>
                 </div>
             </div>
@@ -239,3 +222,26 @@
 </body>
 
 </html>
+
+<script>
+    function NumberSkip(page) {
+        return (page - 1) * {{ lim }}
+    };
+</script>
+<script>
+    function addUrlParameter(name, value) {
+        var searchParams = new URLSearchParams(window.location.search)
+        searchParams.set(name, value)
+        window.location.search = searchParams.toString()
+    }
+</script>
+<script>
+    function changeLimit() {
+        const val = document.querySelectorAll("#limit-selected")[0].value;
+        addUrlParameter("limit", val);
+    }
+    function changeSort() {
+        const val = document.querySelectorAll("#sort-selected")[0].value;
+        addUrlParameter("sort", val);
+    }
+</script>
